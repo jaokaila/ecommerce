@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Site e-commerce{% endblock %}</title>
+        {% block stylesheet %}
+            <link rel="stylesheet" href={{asset('css/bootstrap.min.css')}}  type="text/css">
+            <link rel="stylesheet" href={{asset('css/style.css')}}>
+            <link rel="stylesheet" href={{asset('font-awesome/css/font-awesome.min.css')}}  type="text/css">
+            <link rel="stylesheet" href={{asset('fonts/font-slider.css" type="text/css')}}>
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+
+       
+    <!--Navigation-->
+    
+                
+     {%block navigation%}
+     {%endblock%}
+               
+        <div id="page-content" class="home-page">   
+    
+        
+        {%block body%}
+        {%endblock%}
+
+        </div>
+        {%block footer%}
+        
+   {%endblock%}
+       
+    </body>
+</html>

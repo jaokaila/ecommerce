@@ -1,0 +1,173 @@
+{% extends "::base.html.twig" %}
+{%block title%}{%endblock%}
+{%block stylsheet%}{%endblock%}
+{%block navigation%}
+	<div>{{render(controller('EcommerceBundle:Public:menu'))}}</div>
+{%endblock%}
+{%block body%}
+<div id="page-content" class="single-page">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<ul class="breadcrumb">
+						<li><a href="{{path('ecommerce_homepage')}}">Home</a></li>
+						{%for details in detail %}
+						<li><a href="{{path('ecommerce_par_categorie', {'cat': details.categorie.nom})}}">{{details.categorie.nom}}</a></li>
+						<li>{{details.name}}</li>
+						{%endfor%}
+					</ul>
+				</div>
+			</div>
+			<div class="row">
+				<div id="main-content" class="col-md-12">
+					<div class="product">
+						<div class="col-md-6">
+							<div class="image">
+								{%for details in detail %}
+								<center><img style="margin-top: 50px;" src="{{details.images.path}}" /></center>
+								
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="caption">
+								<div class="name"><h3>{{details.name}}</h3></div>
+								<div class="rating"><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star-empty"></span></div>
+								<div class="info">
+									<ul>
+										<li>Brand: </li>
+										<li>ID: {{details.id}}</li>
+									</ul>
+								</div>
+								<div class="price">{{details.prix}}</div>
+								<form action="{{path('ecommerce_ajouter', {'id': details.id})}}" method="get">
+								<div class="options">
+								
+								
+									AVAILABLE OPTIONS
+									<select>
+										<option value="" selected>----Please Select----</option>
+										<option value="red">RED</option>
+										<option value="black">BLACK</option>
+									</select>
+								</div>
+								<div class="well"><label>Qty: </label> <input class="form-inline quantity" type="text" value="1" name="qte">
+								{% if panier[details.id] is not defined %}
+								<button class="btn btn-3 ">ADD</button></div>
+								{%else%}
+									<a href="{{path('ecommerce_panier')}}"class="btn btn-3">produit déjà dans votre panier</a>
+								
+								{%endif%}
+								</form>
+								{%endfor%}
+								<div class="share well">
+									<strong style="margin-right: 13px;">Share :</strong>
+									<a href="#" class="share-btn" target="_blank">
+										<i class="fa fa-twitter"></i>
+									</a>
+									<a href="#" class="share-btn" target="_blank">
+										<i class="fa fa-facebook"></i>
+									</a>
+									<a href="#" class="share-btn" target="_blank">
+										<i class="fa fa-linkedin"></i>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+						<div class="clear"></div>
+					</div>	
+					<div class="product-desc">
+						<ul class="nav nav-tabs">
+							<li class="active"><a href="#description">Description</a></li>
+							
+						</ul>
+						<div class="tab-content">
+							<div id="description" class="tab-pane fade in active">
+								<h4>Sample Lorem Ipsum Text</h4>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at ante. Mauris eleifend, quam a vulputate dictum, massa quam dapibus leo, eget vulputate orci purus ut lorem. In fringilla mi in ligula. Pellentesque aliquam quam vel dolor. Nunc adipiscing. Sed quam odio, tempus ac, aliquam molestie, varius ac, tellus. Vestibulum ut nulla aliquam risus rutrum interdum. Pellentesque lorem. Curabitur sit amet erat quis risus feugiat viverra. Pellentesque augue justo, sagittis et, lacinia at, venenatis non, arcu. Nunc nec libero. In cursus dictum risus. Etiam tristique nisl a</p>
+								<h4>Sample Lorem Ipsum Text</h4>
+								<p>Sed eget turpis a pede tempor malesuada. Vivamus quis mi at leo pulvinar hendrerit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque aliquet lacus vitae pede. Nullam mollis dolor ac nisi. Phasellus sit amet urna. Praesent pellentesque sapien sed lacus. Donec lacinia odio in odio. In sit amet elit. Maecenas gravida interdum urna. Integer pretium, arcu vitae imperdiet facilisis, elit tellus tempor nisi, vel feugiat ante velit sit amet mauris. Vivamus arcu. Integer pharetra magna ac lacus. Aliquam vitae sapien in nibh vehicula auctor. Suspendisse leo mauris, pulvinar sed, tempor et, consequat ac, lacus. Proin velit. Nulla semper lobortis mauris. Duis urna erat, ornare et, imperdiet eu, suscipit sit amet, massa. Nulla nulla nisi, pellentesque at, egestas quis, fringilla eu, diam.</p>
+							</div>
+							<div id="review" class="tab-pane fade">
+							  <div class="review-text">
+								<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+							  </div>
+							  <div class="review-form">
+								<h4>Write a review</h4>
+									<form name="form1" id="ff" method="post" action="contact.php">
+										<label>
+										<span>Enter your name:</span>
+										<input type="text"  name="name" id="name" required>
+										</label>
+										<label>
+										<span>Your message here:</span>
+										<textarea name="message" id="message"></textarea>
+										</label>
+										<center><input class="sendButton" type="submit" name="Submit" value="Submit"></center>
+									</form>
+							  </div>
+							</div>
+						</div>
+					</div>
+					<div class="heading"><h2>RELATED PRODUCTS</h2></div>
+
+					<div class="product-related">
+					<div class="row">	
+						{%for categorie in categories%}
+						
+							<div class="col-md-3 ">
+								<div class="product">
+									<div class="image">
+										<a href="{{path('ecommerce_produit',{'cat':categorie.categorie.nom, 'id':categorie.id})}}"><img src="{{categorie.images.path}}" /></a>
+										<ul class="buttons">
+											<li><a class="btn btn-2 cart" href="{{path('ecommerce_panier', {'id':categorie.id})}}"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
+											<li><a class="btn btn-2 wishlist" href="#"><span class="glyphicon glyphicon-heart"></span></a></li>
+											<li><a class="btn btn-2 compare" href="#"><span class="glyphicon glyphicon-transfer"></span></a></li>
+										</ul>
+									</div>
+									<div class="caption">
+										<div class="name"><h3><a href="product.html">{{categorie.name}}</a></h3></div>
+										<div class="price">{{categorie.prix}}<span>$98</span></div>
+										<div class="rating"><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star-empty"></span></div>
+									</div>
+								</div>
+							</div>
+						
+						{%endfor%}	
+					</div>
+						
+					
+				</div>
+				
+			</div>
+		</div>
+	</div>	
+	
+	
+	<!-- IMG-thumb -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">         
+          <div class="modal-body">                
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+	
+	<script>
+	$(document).ready(function(){
+		$(".nav-tabs a").click(function(){
+			$(this).tab('show');
+		});
+		$('.nav-tabs a').on('shown.bs.tab', function(event){
+			var x = $(event.target).text();         // active tab
+			var y = $(event.relatedTarget).text();  // previous tab
+			$(".act span").text(x);
+			$(".prev span").text(y);
+		});
+	});
+	</script>
+</body>
+</html>
+
+{%endblock%}

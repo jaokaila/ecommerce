@@ -1,0 +1,3 @@
+pages_homepage:
+    path:     /pages
+    defaults: { _controller: PagesBundle:Pages:pages}

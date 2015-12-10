@@ -1,0 +1,29 @@
+{% trans_default_domain 'FOSUserBundle' %}
+<div id="page-content" class="single-page">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-md-3">
+			<div class="heading"></div>
+				<div class="well">
+					<ul class="list-unstyled">
+						<li><a href="{{path('fos_user_profile_show')}}">Mes information</a></li>
+						<li><a href="{{path('fos_user_profile_edit')}}">Editer mes informations</a></li>
+						<li><a href="{{path('fos_user_change_password')}}">Changer mot de passe</a></li>
+						<li><a href="#">Mes factures</a></li>
+						<li><a href="#">Mes adresse</a></li>
+						<li><a href="{{path('fos_user_security_logout')}}">Deconnection</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-md-1"></div>
+			<div class="col-md-6">
+			<div class="heading"><h2>Mes informations</h2></div>
+				<div class="fos_user_user_show">
+				    <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
+				    <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+

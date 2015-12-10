@@ -1,0 +1,17 @@
+{% extends "::base.html.twig" %}
+{%block navigation%}
+    <div>{{render(controller('EcommerceBundle:Public:menu'))}}</div>
+{%endblock%}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{%block body%}
+{% block fos_user_content %}
+    <p>Felicitation vous êtes inscrit</p>
+    {% if targetUrl %}
+    <p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>
+    {% endif %}
+{% endblock fos_user_content %}
+{%endblock%}
+{%block footer%}
+{%endblock%}

@@ -1,0 +1,51 @@
+ecommerce_homepage:
+    path:     /
+    defaults: { _controller: EcommerceBundle:Public:index }
+
+ecommerce_produit:
+    path:     /produit
+    defaults: { _controller: EcommerceBundle:Public:produit }
+
+ecommerce_panier:
+    path:     /panier
+    defaults: { _controller: EcommerceBundle:Public:panier}
+
+ecommerce_categorie:
+    path:     /categorie
+    defaults: { _controller: EcommerceBundle:Public:categorie}
+
+ecommerce_contact:
+    path:     /contact
+    defaults: { _controller: EcommerceBundle:Public:contact}
+
+ecommerce_insert:
+    path:     /test
+    defaults: { _controller: EcommerceBundle:Public:test}
+
+ecommerce_par_categorie:
+    path:     /par_categorie
+    defaults: { _controller: EcommerceBundle:Public:par_categorie}
+
+ecommerce_ajouter:
+    path:     /ajouter/{id}
+    defaults: { _controller: EcommerceBundle:Public:ajouter}
+
+ecommerce_supprimer:
+    path:     /supprimer/{id}
+    defaults: { _controller: EcommerceBundle:Public:supprimer}
+
+ecommerce_livraison:
+    path:     /livraison
+    defaults: { _controller: EcommerceBundle:Public:livraison}
+
+ecommerce_validation:
+    path:     /validation
+    defaults: { _controller:EcommerceBundle:Public:validation}    
+
+ecommerce_suppression:
+    path:     /suppression/{id}
+    defaults: { _controller:EcommerceBundle:Public:suppression}
+
+ecommerce_commande:
+    path:     /commande/{id}
+    defaults: { _controller:EcommerceBundle:Commande:validationcommande}

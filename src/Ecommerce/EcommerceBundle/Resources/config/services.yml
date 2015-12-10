@@ -1,0 +1,16 @@
+services:
+#    ecommerce.example:
+#        class: Ecommerce\EcommerceBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
+
+
+
+    setNewReference:
+        class: Ecommerce\EcommerceBundle\Services\getReference
+        arguments: {@security.context, @doctrine.orm.entity_manager}
+
+    redirectionListener:
+        class: Ecommerce\EcommerceBundle\Listener\RedirectionListener
+        arguments: [@service_container, @session]
+        tags:
+          - {name: kernel.event_listener, event: kernel.request, method: onKernelRequest}

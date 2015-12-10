@@ -1,0 +1,11 @@
+{% extends "::base.html.twig" %}
+{%block navigation%}
+    <div>{{render(controller('EcommerceBundle:Public:menu'))}}</div>
+{%endblock%}
+{%block body%}
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+    <p>{{ 'registration.check_email'|trans({'%email%': user.email}) }}</p>
+{% endblock fos_user_content %}
+{%endblock%}

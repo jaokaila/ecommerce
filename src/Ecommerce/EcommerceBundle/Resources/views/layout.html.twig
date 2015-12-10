@@ -1,0 +1,77 @@
+{% extends "::base.html.twig" %}
+{%block title%}{%endblock%}
+
+
+{%block navigation%}
+ <nav id="top">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-6">
+                    
+                </div>
+                <div class="col-xs-6">
+                    {%if etat == false %}
+                    <ul class="top-link">
+                        <li><a href="{{path('fos_user_security_login')}}"><span class="glyphicon glyphicon-user"></span> se connecter</a></li>
+                        <li><a href="{{path('fos_user_security_login')}}"><span class="glyphicon glyphicon-user"></span> s'inscrire</a></li>
+                        <li><a href="contact.html"><span class="glyphicon glyphicon-envelope"></span> Contact</a></li>
+                    </ul>
+                    {%else%}
+                    <ul class="top-link">
+                        <li><a href="{{path('fos_user_security_logout')}}"><span class="glyphicon glyphicon-user"></span> Se déconnecter</a></li>
+                        <li><a href="contact.html"><span class="glyphicon glyphicon-envelope"></span> Contact</a></li>
+                    </ul>
+               {%endif%}
+
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!--Header-->
+    
+    <header >
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    {#<div id="logo"><img src="images/logo.png" /></div>#}
+                </div>
+                <div class="col-md-6 text-right">
+                    <div class="phone"><span class="glyphicon glyphicon-earphone"></span>261-xx-xx-xxx-xx</div>
+                    <div class="mail"><span class="glyphicon glyphicon-envelope"></span>infor@mysite.com</div>
+                    <form class="form-search">  
+                        <input type="text" class="input-medium search-query">  
+                        <button type="submit" class="btn"><span class="glyphicon glyphicon-search"></span></button>  
+                    </form>
+                </div>
+                <div id="cart"><a class="btn btn-cart" href="{{path('ecommerce_panier')}}"><span class="glyphicon glyphicon-shopping-cart"></span>Panier<strong>{{article}}</strong></a></div>
+            </div>
+        </div>
+    </header>
+	<nav id="menu" class="navbar">
+        <div class="container">
+            <div class="navbar-header"><span id="heading" class="visible-xs">Categories</span>
+              <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"><i class="fa fa-bars"></i></button>
+            </div>
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+	<ul class="nav navbar-nav">
+		<li><a href="{{path('ecommerce_homepage')}}">Home</a></li>
+	{%for menu in menus %}
+		<li><a href="{{path('ecommerce_par_categorie', {'cat': menu.nom})}}">{{menu.nom}}</a></li>
+	{%endfor%}
+	</ul>
+	</div>
+        </div>
+    </nav>
+
+{%endblock%}
+
+ {%block footer%}
+ {%endblock%}
+        
+        {% block javascript %}
+            
+            <script src="{{asset('js/jquery-2.1.1.js')}}"></script> 
+             <script src="{{asset('js/bootstrap.min.js')}}"></script> 
+             <script src="{{asset('js/carousel.js')}}"></script>
+           
+        {% endblock %}
